@@ -4,11 +4,11 @@
   box-sizing:border-box;
 }
 
-
+/* banner  */
 .banner
 {
    position:relative;
-   width:100%;
+   width:100vw;
    height:100vh;
    background:black;
    display:flex;
@@ -140,11 +140,12 @@ ul li:hover
 {
    display:block;
 }
-  
+
+/* About us    */
 .about
 {
    position:relative;
-   width:100%;
+   width:100vw;
    display:flex;
  }
 
@@ -178,15 +179,17 @@ ul li:hover
  	width:50%;
    background-size:800px 600px;
    background-repeat: no-repeat;
- 	background-position:center;
+   background-position:center;
+   background-color:#162c3b ;
 }
 
-
+/* Services  */
 .services
 {
    background:#12222d;
    padding:100px;
    text-align:center;
+   width:100vw;
 }
 
 .services .container
@@ -207,7 +210,8 @@ ul li:hover
    height:300px;
    display:flex;
   	justify-content:center;
-	align-items:center;
+   align-items:center;
+   color: black;
 }
 
 .services .container .serviceBx img
@@ -220,12 +224,13 @@ ul li:hover
    font-weight:500;
    font-size:40px;
    letter-spacing:1px;
+   color:black ;
 }
 
 .technology
 {
    background:#3f8ffc;
-   width:100%;
+   width:100vw;
    padding:100px;
    padding-top:200px;
    margin-top:-300px;
@@ -254,12 +259,14 @@ ul li:hover
      max-width:100%;
 }
 
+/* Testimonials  */
 .testimonials
 {
    position:relative;
    padding:100px;
    background:#12222d;
    text-align:center;
+   width:100vw ;
 }
 
 .testimonials .container
@@ -286,19 +293,23 @@ ul li:hover
 .testimonials .container .contentBx p
 {
    font-style:italic;
+   color:black ;
 }
 
 .testimonials .container .contentBx h3
 {
    width:100%;
    font-weight:800;
+   color: black;
 }
 
+/* Contact  */
 .contact
 {
    position:relative;
-   width:100%;
+   width:100vw;
    display:flex;
+   background-color: white;
 }
 
 .contact .contentBx
@@ -357,7 +368,7 @@ ul li:hover
 .form .inputBx input[type="submit"]
 {
    width:150px;
-   background:black;
+   background:black ;
    color:#fff;
    cursor:pointer;
    font-weight:400px;
@@ -371,6 +382,7 @@ ul li:hover
    justify-content: center;
    align-items:center;
    height:40px;
+   width:100vw ;
 }
 
 @media(max-width:991px)
