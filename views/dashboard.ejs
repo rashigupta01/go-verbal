@@ -1,3 +1,26 @@
 <h1 class="mt-4">Dashboard</h1>
 <p class="lead mb-3">Welcome <%= user.category%> <%= user.name %></p>
 <a href="/users/logout" class="btn btn-secondary">Logout</a>
+
+<form action="../chat.html">
+
+    <label>Display name</label>
+                 
+    <input type="text" name="username" placeholder="username">
+    <br>
+    <input type="radio" id="a1" name="room" value="1"> 
+    <label for="a1">GD Topic 1</label> <br>                  
+    
+
+    <input type="radio" id="a1" name="room" value="2"> 
+    <label for="a1">GD Topic 2</label><br>
+     
+
+    <input type="radio" id="a1" name="room" value="3">  
+    <label for="a1">GD Topic 3</label><br>
+
+    <input type="radio" id="a1" name="room" value="4">  
+    <label for="a1">GD Topic 4</label><br>
+
+    <button>Join</button>
+</form>

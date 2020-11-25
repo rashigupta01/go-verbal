@@ -5,8 +5,16 @@ const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
 const path = require('path')
-
 const app = express()
+const { addUser , removeUser , getUser , getUsersInRoom } = require('./src/utils/users.js')
+const http = require('http')
+const { generateMessage } = require("./src/utils/messages.js")
+const server = http.createServer(app)
+const socketio = require('socket.io')
+const io = socketio(server)
+
+//require("./src/index.js");
+
 
 // Passport config
 require('./config/passport')(passport)
@@ -58,4 +66,35 @@ app.use((req, res, next) => {
 app.use('/', require('./routers/index'))
 app.use('/users', require('./routers/user'))
 
-app.listen(process.env.PORT, console.log(`Server started on port ${process.env.PORT}`))
+
+io.on('connection',(socket)=>{
+    console.log('new websocket connection ')
+
+    socket.on('join', ({ username , room },callback) => {
+        console.log('333new websocket connection ')
+        const  { error , user } = addUser({ id : socket.id , username , room })
+
+        if(error){
+            return callback(error)
+        }
+
+        socket.join(user.room)
+
+        if(room==1) 
+        socket.emit('message',generateMessage("https://meet.google.com/ecj-gxrx-kuy"))
+        
+        else if(room==2)
+        socket.emit('message',generateMessage("https://meet.google.com/zat-rjic-jvu"))
+
+        callback()
+    })
+    
+    socket.on('sendmessage',(message,callback)=>{
+        const user = getUser(socket.id)
+        io.to(user.room).emit('message',generateMessage(message))
+        callback()
+    })
+
+})
+
+server.listen(process.env.PORT, console.log(`Server started on port ${process.env.PORT}`))
