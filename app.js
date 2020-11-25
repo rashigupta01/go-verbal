@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
+const path = require('path')
 
 const app = express()
 
@@ -21,6 +22,12 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
 // EJS
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
+
+// public directory path
+const publicDirectoryPath = path.join(__dirname, '/public')
+
+// Static directory
+app.use(express.static(publicDirectoryPath))
 
 // Bodyparser
 app.use(express.urlencoded({ extended: false }))
