@@ -1,7 +1,6 @@
 {
   "name": "go-verbal",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -24,5 +23,14 @@
   "devDependencies": {
     "env-cmd": "^10.1.0",
     "nodemon": "^2.0.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rashigupta01/go-verbal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rashigupta01/go-verbal/issues"
+  },
+  "homepage": "https://github.com/rashigupta01/go-verbal#readme",
+  "description": ""
 }
