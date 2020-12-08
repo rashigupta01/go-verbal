@@ -1,6 +1,7 @@
-const generateMessage = (text)=>{
+const generateMessage = (link,roomNo)=>{
     return {
-        text , 
+        link , 
+        roomNo
       //  createdAt : new Date().getTime()
     }
 }

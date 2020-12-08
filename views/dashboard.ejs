@@ -2,12 +2,11 @@
 <p class="lead mb-3">Welcome <%= user.category%> <%= user.name %></p>
 <a href="/users/logout" class="btn btn-secondary">Logout</a>
 
-<form action="../chat.html">
 
-    <label>Display name</label>
-                 
-    <input type="text" name="username" placeholder="username">
-    <br>
+
+    <form action="/registerRoom" method="POST">
+
+    <input type="text" name="email" value="<%=user.email %>">  <br>
     <input type="radio" id="a1" name="room" value="1"> 
     <label for="a1">GD Topic 1</label> <br>                  
     
@@ -21,6 +20,34 @@
 
     <input type="radio" id="a1" name="room" value="4">  
     <label for="a1">GD Topic 4</label><br>
+    <button type="submit"> Summit</button>
+    </form>
 
-    <button>Join</button>
+
+<br> <br><br><br>
+
+
+
+
+<form action="/chat">
+
+    <label>Display name</label>
+                 
+    <input type="text" name="username" placeholder="username" value="<%=user.email %>">
+    <!-- <br>
+    <input type="radio" id="a1" name="room" value="1"> 
+    <label for="a1">GD Topic 1</label> <br>                  
+    
+
+    <input type="radio" id="a1" name="room" value="2"> 
+    <label for="a1">GD Topic 2</label><br>
+     
+
+    <input type="radio" id="a1" name="room" value="3">  
+    <label for="a1">GD Topic 3</label><br>
+
+    <input type="radio" id="a1" name="room" value="4">  
+    <label for="a1">GD Topic 4</label><br> -->
+
+    <button type="submit">Join</button>
 </form>

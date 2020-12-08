@@ -14,8 +14,6 @@ const socketio = require('socket.io')
 const io = socketio(server)
 
 //require("./src/index.js");
-
-
 // Passport config
 require('./config/passport')(passport)
 
@@ -69,22 +67,36 @@ app.use('/users', require('./routers/user'))
 
 io.on('connection',(socket)=>{
     console.log('new websocket connection ')
+    
+    socket.on('join', async ({ username , room },callback) => {
+      //  console.log('333new websocket connection ')
+      console.log("values = "+username + room)
+        const  { user1 } = await addUser({ id : socket.id , username , room })
 
-    socket.on('join', ({ username , room },callback) => {
-        console.log('333new websocket connection ')
-        const  { error , user } = addUser({ id : socket.id , username , room })
+        // if(error){
+        //     return callback(error)
+        // }
 
-        if(error){
-            return callback(error)
-        }
+        socket.join(user1.room)
+        console.log("rommval = "+user1.room)
 
-        socket.join(user.room)
-
-        if(room==1) 
-        socket.emit('message',generateMessage("https://meet.google.com/ecj-gxrx-kuy"))
+        if(user1.room==1) 
+        socket.emit('message',generateMessage("https://meet.google.com/ecj-gxrx-kuy","1"))
         
-        else if(room==2)
-        socket.emit('message',generateMessage("https://meet.google.com/zat-rjic-jvu"))
+        else if(user1.room==2)
+        socket.emit('message',generateMessage("https://meet.google.com/zat-rjic-jvu","2"))
+
+        else if(user1.room==3)
+        socket.emit('message',generateMessage("https://meet.google.com/cts-jkcd-vvi","3"))
+        
+        else if(user1.room==4)
+        socket.emit('message',generateMessage("https://meet.google.com/cwe-kdzj-dat","4"))
+
+        else if(user1.room==10)
+        {
+            console.log("room 10 in else id in app")
+            socket.emit('message',generateMessage("Not register","10"))
+        }
 
         callback()
     })

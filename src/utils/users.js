@@ -1,30 +1,36 @@
-const users = []
+const User = require('../../models/User')
 
-const addUser = ({ id, username , room }) => {
+const addUser = async ({ id ,username , room }) => {
+    email = username;
 
-    username = username.trim().toLowerCase()
-    room = room.trim().toLowerCase()
-
+    console.log("in users= " + username + room)
     if(!username || !room){
         return {
             error : 'Both username and room are required to enter !!'
         }
     }
 
-const existingUser = users.find((user)=>{
-    return user.username === username && user.room === room
-})
+    user = await User.findOne({email: email}) // .then(user => {
+       // console.log(existingUser) 
 
-if(existingUser){
-    return {
-        error : 'User already present '
-    }
-}
+        existingUser = await user.room.find((roomF)=>{
+            return roomF === room } )
+        
+        //console.log("exost = "+existingUser)
+        if(existingUser==undefined)
+        {
+            room = 10;
+        }
+        console.log("check =  "+room)
+        //Add new User
+        
 
-// Add new User
-const user =  { id, username, room} 
-users.push(user)
-return { user }
+  //  }) .catch(err => console.log(err))
+
+    const user1 =  { id, username, room} 
+    //users.push(user)
+    return { user1 }
+   
 }
 
 
